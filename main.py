@@ -102,12 +102,6 @@ class VetClinicApp(QMainWindow):
         self.setWindowTitle("Vet Clinic App")
         self.setGeometry(100, 100, 800, 600)
 
-    def add_client(self):
-        # Добавление нового клиента
-        # Вы можете расширить этот метод для добавления остальных данных
-        self.repository.add_client("123456789", "Doe", "John", "Smith", "19900101")
-        self.update_clients_table()
-
     def update_clients_table(self):
         # Обновление таблицы клиентов
         clients = self.repository.get_clients()
@@ -123,7 +117,6 @@ class VetClinicApp(QMainWindow):
         if selected_row >= 0:
             client_id_item = self.clients_table.item(selected_row, 0)
             client_id = int(client_id_item.text())
-            # Вызываем метод удаления клиента из репозитория
             self.repository.remove_client(client_id)
             self.update_clients_table()
 
